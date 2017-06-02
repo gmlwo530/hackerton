@@ -37,3 +37,7 @@ img{
     border-right-width: 1px;
 }
 
+li{
+    list-style: none;
+}
+
