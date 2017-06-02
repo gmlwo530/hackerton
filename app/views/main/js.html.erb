@@ -1,7 +1,7 @@
 <div class="container">
 <nav class="nav-header">
     <div class="logo">
-    <a href = "/"><img src="/assets/logo.jpg"></a>
+    <img src="/assets/logo.jpg">
     </div>
     
     <div class="name">
@@ -9,7 +9,7 @@
     </div>
     
     <div class="sign_out">
-    <%= current_user.name %>
+    <%= current_user.email %>
     <%= link_to 'sign out',  destroy_user_session_path, method: :delete %>
     </div>
 </nav>
@@ -19,7 +19,7 @@
      
         <ul class="offset-md-5 col-md-4">
             <a href="/main/ruby"><li><i class="fa fa-diamond" aria-hidden="true"></i> ruby</li></a>
-            <a href="/main/html"><li><i class="fa fa-code" aria-hidden="true"></i> html</li></a>
+             <a href="/main/html"><li><i class="fa fa-code" aria-hidden="true"></i> html</li></a>
             <a href="/main/css"><li><i class="fa fa-television" aria-hidden="true"></i> css</li></a>
             <a href="/main/js"><li><i class="fa fa-align-left" aria-hidden="true"></i> js</li></a>
         </ul>
@@ -38,7 +38,7 @@
         </div>
         
    
-    <div class="form-check list">
+    <div class="form-check">
       <label class="form-check-label">
         <input type="radio" class="form-check-input" name="option" value="ruby" checked>
         ruby
@@ -64,12 +64,17 @@
 
     
     <% @posts.each do |p| %>
+    <% if p.option == "js" %>
         <div class="each_post container">
 
 
             <p>질문 : <%= p.content %></p>
             <p>주제 : <%= p.option %></p>
  
+        
+  
+            
+
 
             <% if p.image_file_name.nil? %>
             <% else %>
@@ -79,28 +84,12 @@
 
         </div>
         
-        <label class= "col-3">
-            <div class="row mx-auto" style="text-align:center;">
-             
-                <form action = "/like/<%=p.id%>" method = "get">
-                    <button type="submit" class="btn btn-primary">
-                        <% if current_user.is_like?(p) %>
-                            Unlike <%= p.likes.size %>    
-                        <% else %>
-                            Like <%= p.likes.size %>
-                        <% end %>
-                    </button>
-                </form>
-        
-                <form action="/edit/<%= p.id %>" method="get">
-                    <button type="submit" class="btn btn-secondary">Edit</button> 
-                </form>
-                <form action="/delete/<%= p.id %>" method="get">
-                    <button type="submit" class="btn btn-danger">Delete</button> 
-                </form>
-       
-            </div>
-        </label>
+        <form action="/edit/<%= p.id %>" method="get">
+            <button type="submit" class="btn btn-secondary">Edit</button> 
+        </form>
+        <form action="/delete/<%= p.id %>" method="get">
+            <button type="submit" class="btn btn-danger">Delete</button> 
+        </form>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
@@ -116,20 +105,29 @@
             <% end %>
         </div>
         
+        <form action = "/like/<%=p.id%>" method = "get">
+                
+            <button type="submit" class="btn btn-primary">
+                <% if current_user.is_like?(p) %>
+                    Unlike <%= p.likes.size %>    
+                <% else %>
+                    Like <%= p.likes.size %>
+                <% end %>
+            </button>
+                
+        </form>
         
         <form action = "/create_comment/<%=p.id%>", method = "get" class = "row">
             <input type="text" class="form-control-file" cols = "30" name = "content" placeholder = "댓글을 입력하세요">
             <button type="submit" class="btn btn-primary">댓글달기</button>
         </form>
+    <% else %>
+        Make first post!
+    <% end %>
         
 
     <% end %>
         
 </div>
 
-
-<footer class="footer fixed-bottom">
-  <ul class="footer_content">
-    <li>&copy;희재, 지연, 규란, 건회 - Likelion at UOS</li>
-  </ul>
-</footer>
+ 
