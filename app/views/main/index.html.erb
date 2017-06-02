@@ -8,7 +8,8 @@
     </div>
     
     <div class="sign_out">
-    <p>sign out</p>
+    <%= current_user.email %>
+    <%= link_to 'sign out',  destroy_user_session_path, method: :delete %>
     </div>
 </nav>
 
