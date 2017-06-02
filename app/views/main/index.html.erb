@@ -1,3 +1,4 @@
+<div class="container">
 <nav class="nav-header">
     <div class="logo">
     <img src="/assets/logo.jpg">
@@ -13,37 +14,94 @@
     </div>
 </nav>
 
-<section class="nav_left col-md-3">
+<section class="nav_left">
     
      
-        <ul>
-            <li><i class="fa fa-diamond" aria-hidden="true"></i> ruby</li>
+        <ul class="offset-md-5 col-md-4">
+            <a href="/main/ruby"><li><i class="fa fa-diamond" aria-hidden="true"></i> ruby</li></a>
             <li><i class="fa fa-code" aria-hidden="true"></i> html</li>
             <li><i class="fa fa-television" aria-hidden="true"></i> css</li>
             <li><i class="fa fa-align-left" aria-hidden="true"></i> js</li>
         </ul>
 </section>
+</div>
 
 <div class="main container">
-    <form action = "/create_post" method = "get">
+    
+    <form enctype="multipart/form-data" action = "/create_post" method = "post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group" style = "margin-width:auto">
             <textarea class="form-control" name = "content" rows="4" placeholder = "내용을 입력하세요"></textarea>
+            <input name = "image" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted"></small>            
             <button type="submit" class="btn btn-primary post-btn">Submit</button>
         </div>
-     </form>
+        
+   
+    <div class="form-check">
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="option" value="ruby" checked>
+        ruby
+      </label>
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="option" value="css">
+        css
+      </label>
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="option" value="html">
+        html
+      </label>
+      <label class="form-check-label">
+        <input type="radio" class="form-check-input" name="option" value="js">
+        js
+      </label>
+      
+    </div>
+   
     
+  
+     </form>
+
     
     <% @posts.each do |p| %>
         <div class="each_post container">
+
             <p>질문 : <%= p.content %></p>
+            <p>주제 : <%= p.option %></p>
+ 
+                <p><%= image_tag p.image.url(:thumb) %></p>
+  
+            
+
         </div>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
+
                 
-                <p><%= current_user.name %> : <%= c.content %></p>
+                
+
+                <p><%= c.writer %> : <%= c.content %></p>
+                <form action = "/comment_delete/<%=c.id%>" method = "get">
+                    <button type="submit" class="btn btn-primary">댓글삭제</button>
+                </form>                
+
             <% end %>
         </div>
+        
+
+        
+        <form action = "/like/<%=p.id%>" method = "get">
+                
+            <button type="submit" class="btn btn-primary">
+                <% if current_user.is_like?(p) %>
+                    Unlike <%= p.likes.size %>    
+                <% else %>
+                    Like <%= p.likes.size %>
+                <% end %>
+            </button>
+                
+        </form>
         
         <form action = "/create_comment/<%=p.id%>", method = "get" class = "row">
             <input type="text" class="form-control-file" cols = "30" name = "content" placeholder = "댓글을 입력하세요">
