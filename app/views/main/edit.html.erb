@@ -1,0 +1,9 @@
+<h1>Edit page</h1>
+<div class="main container">
+    <form action = "/update/<%= @edit_post.id%>" method = "get">
+        <div class="form-group" style = "margin-width:auto">
+            <textarea class="form-control" name = "content" rows="4" ><%= @edit_post.content%></textarea>
+            <button type="submit" class="btn btn-primary post-btn">Submit</button>
+        </div>
+    </form>
+</div>
