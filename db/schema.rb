@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170602165936) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.string   "writer"
     t.text     "content"
     t.string   "option"
     t.datetime "created_at",         null: false

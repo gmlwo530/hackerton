@@ -90,23 +90,20 @@
                         <% end %>
                     </button>
                 </form>
-        
-                <form action="/edit/<%= p.id %>" method="get">
-                    <button type="submit" class="btn btn-secondary">Edit</button> 
-                </form>
-                <form action="/delete/<%= p.id %>" method="get">
-                    <button type="submit" class="btn btn-danger">Delete</button> 
-                </form>
-       
+                <% if current_user.name == p.writer %>
+                    <form action="/edit/<%= p.id %>" method="get">
+                        <button type="submit" class="btn btn-secondary">Edit</button> 
+                    </form>
+                    <form action="/delete/<%= p.id %>" method="get">
+                        <button type="submit" class="btn btn-danger">Delete</button> 
+                    </form>
+                <% else %>
+                <%end%>
             </div>
         </label>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
-
-                
-                
-
                 <p><%= c.writer %> : <%= c.content %></p>
                 <form action = "/comment_delete/<%=c.id%>" method = "get">
                     <button type="submit" class="btn btn-primary">댓글삭제</button>

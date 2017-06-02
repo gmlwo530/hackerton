@@ -6,7 +6,7 @@ class MainController < ApplicationController
     
     def create_post
        post = Post.new
-       #post.writer = current_user.name
+       post.writer = current_user.name
        post.content = params[:content]
        post.option = params[:option]
        post.image = params[:image]
