@@ -66,6 +66,7 @@
     <% @posts.each do |p| %>
         <div class="each_post container">
 
+
             <p>질문 : <%= p.content %></p>
             <p>주제 : <%= p.option %></p>
  
@@ -73,7 +74,21 @@
   
             
 
+
+            <% if p.image_file_name.nil? %>
+            <% else %>
+                <p><%= image_tag p.image.url(:thumb) %></p>
+            <% end %>
+            <p><%= p.content %></p>
+
         </div>
+        
+        <form action="/edit/<%= p.id %>" method="get">
+            <button type="submit" class="btn btn-secondary">Edit</button> 
+        </form>
+        <form action="/delete/<%= p.id %>" method="get">
+            <button type="submit" class="btn btn-danger">Delete</button> 
+        </form>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
@@ -88,8 +103,6 @@
 
             <% end %>
         </div>
-        
-
         
         <form action = "/like/<%=p.id%>" method = "get">
                 

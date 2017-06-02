@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+gem 'bootstrap-sass', '2.0.4'
+gem 'autoprefixer-rails'
 
 gem'devise'
 gem "paperclip", "~> 5.0.0"

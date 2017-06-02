@@ -50,4 +50,26 @@ class MainController < ApplicationController
         redirect_to '/'
     end
 
+
+
+    
+    def delete
+        delete_post = Post.find(params[:post_id])
+        delete_post.destroy
+        
+        redirect_to '/'
+    end
+  
+    def edit
+       @edit_post = Post.find(params[:post_id])
+    end
+  
+    def update
+        update_post = Post.find(params[:post_id])
+        update_post.content = params[:content]
+        update_post.save
+        redirect_to '/'
+    end
+    
+
 end
