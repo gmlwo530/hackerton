@@ -25,25 +25,48 @@
 </section>
 
 <div class="main container">
-    <form action = "/create_post" method = "get">
+    
+    <form enctype="multipart/form-data" action = "/create_post" method = "post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group" style = "margin-width:auto">
             <textarea class="form-control" name = "content" rows="4" placeholder = "내용을 입력하세요"></textarea>
+            <input name = "image" type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            <small id="fileHelp" class="form-text text-muted"></small>            
             <button type="submit" class="btn btn-primary post-btn">Submit</button>
         </div>
      </form>
-    
+
     
     <% @posts.each do |p| %>
         <div class="each_post container">
+ 
+                <p><%= image_tag p.image.url(:thumb) %></p>
+  
             <p><%= p.content %></p>
         </div>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
-                <!--<p><%= c.writer %></p>-->
-                <p><%= c.content %></p>
+                <p><%= c.writer %> : <%= c.content %></p>
+                <form action = "/comment_delete/<%=c.id%>" method = "get">
+                    <button type="submit" class="btn btn-primary">댓글삭제</button>
+                </form>                
             <% end %>
         </div>
+        
+
+        
+        <form action = "/like/<%=p.id%>" method = "get">
+                
+            <button type="submit" class="btn btn-primary">
+                <% if current_user.is_like?(p) %>
+                    Unlike <%= p.likes.size %>    
+                <% else %>
+                    Like <%= p.likes.size %>
+                <% end %>
+            </button>
+                
+        </form>
         
         <form action = "/create_comment/<%=p.id%>", method = "get" class = "row">
             <input type="text" class="form-control-file" cols = "30" name = "content" placeholder = "댓글을 입력하세요">

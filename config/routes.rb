@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   
   root 'main#index'
   
+  get '/like/:post_id' => 'main#like'
   get  'main/login'
-  get '/create_post' => 'main#create_post'
+  post '/create_post' => 'main#create_post'
   get '/create_comment/:post_id' => 'main#create_comment'
+  get '/comment_delete/:comment_id' => 'main#comment_delete'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
