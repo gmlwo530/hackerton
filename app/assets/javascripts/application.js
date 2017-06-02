@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//= bootstrap.js
+//= metisMenu.js
+//= raphael.js
+//= morris.js
+//= morris-data.js
+//= sb-admin-2.js
