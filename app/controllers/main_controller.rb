@@ -26,7 +26,19 @@ class MainController < ApplicationController
     end
     
     def ruby
-        @post= post.find_by(value= "ruby")
+        @posts= Post.all
+    end
+    
+    def css
+        @posts= Post.all
+    end
+    
+    def js
+        @posts= Post.all
+    end
+    
+    def html
+        @posts= Post.all
     end
 
     def like

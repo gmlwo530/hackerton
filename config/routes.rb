@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get '/comment_delete/:comment_id' => 'main#comment_delete'
 
   get '/main/ruby' => 'main#ruby'
-
+  get '/main/js' => 'main#js'
+  get '/main/html' => 'main#html'
+  get '/main/css' => 'main#css'
   
   get '/update/:post_id' => 'main#update'
   get '/delete/:post_id' => 'main#delete'
