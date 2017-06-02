@@ -87,12 +87,15 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
+<<<<<<< HEAD
     paperclip (5.0.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
+=======
+>>>>>>> 550725052011f54bbc3ca4629b87f368d51af74b
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)

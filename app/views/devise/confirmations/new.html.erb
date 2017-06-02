@@ -1,11 +1,20 @@
 <h2>Resend confirmation instructions</h2>
+<<<<<<< HEAD
 
+=======
+<%= stylesheet_link_tag controller_name, media: 'all' if Rails.application.assets.find_asset("#login.css") %>
+>>>>>>> 550725052011f54bbc3ca4629b87f368d51af74b
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
+<<<<<<< HEAD
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+=======
+    <%= f.label :name %><br />
+    <%= f.name_field :text, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+>>>>>>> 550725052011f54bbc3ca4629b87f368d51af74b
   </div>
 
   <div class="actions">

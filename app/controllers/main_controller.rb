@@ -17,6 +17,7 @@ class MainController < ApplicationController
         comment = Comment.new
         comment.writer = current_user.name
         comment.content = params[:content]
+        comment.image = params[:image]
         comment.post_id = params[:post_id]
         comment.save
         
