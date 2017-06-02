@@ -32,11 +32,21 @@
         </div>
      </form>
     
+ 
     
     <% @posts.each do |p| %>
         <div class="each_post container">
             <p><%= p.content %></p>
+            
+               <form action="/edit/<%= p.id %>" method="get">
+        <button type="submit" class="btn btn-secondary">Edit</button> 
+      </form>
+      <form action="/delete/<%= p.id %>" method="get">
+        <button type="submit" class="btn btn-danger">Delete</button> 
+      </form>
         </div>
+        
+        
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
