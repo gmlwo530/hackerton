@@ -6,7 +6,6 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '0947d8880e0b564d91314c74aa383a651f4b17ad5f4897feea3d0aa32018de5ba83ed87809f89b9606d80f8779aa6caf736634bca5822728b04873b436613025'
   # config.secret_key = '485402924de83d3f0b245ee192c257561c7bb99f0a84670f183aa24efeec014b329a4fa0b02082d90f9972ae53f19fd42424424a714b4f809b6a6956bef3d165'
   # config.secret_key = 'ba6fcba9a3332ff801fea12b187b3f08ca0dbe667728d72e231f23ebafc6a191831e4846e73084f9b8822701bd089cf3a256395da18773cdb00783f54060f339'
 
@@ -110,7 +109,6 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'e93809d878cf2a4e5064a5f3406e66ac23ecd1ed0306cdbc02425d48443f3a03fb442a3809aa069e667bb4f2f99e8281ab969d63fd2ca8b0bd3bf4091adbc725'
   # config.pepper = 'e0aa39a227331f2bd1a2dd2f550fee0208ffc20483cd035ee09ca0acd67e74bc2fd939b05b53b69b6375a0148cc0411c52ec02361e4894406e3cc35c73f1ae6a'
   # config.pepper = 'd9123f49a72683a9227d05a645bd5cf7cc509b5521cd9d2bc4780b7680534ddfe3a43fa52b5fc424ba4f4aae6471aad25eb176a3560e6c8723fa38f98d06b43d'
 
