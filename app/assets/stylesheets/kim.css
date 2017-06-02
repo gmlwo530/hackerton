@@ -1,0 +1,18 @@
+
+.main{
+    width: 60%;
+}
+.container{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.form-group{
+    padding-top: 20px;
+}
+.each_post{
+    background-color: white;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
