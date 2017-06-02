@@ -23,3 +23,34 @@
             <li><i class="fa fa-align-left" aria-hidden="true"></i> js</li>
         </ul>
 </section>
+
+<div class="main container">
+    <form action = "/create_post" method = "get">
+        <div class="form-group" style = "margin-width:auto">
+            <textarea class="form-control" name = "content" rows="4" placeholder = "내용을 입력하세요"></textarea>
+            <button type="submit" class="btn btn-primary post-btn">Submit</button>
+        </div>
+     </form>
+    
+    
+    <% @posts.each do |p| %>
+        <div class="each_post container">
+            <p>질문 : <%= p.content %></p>
+        </div>
+        
+        <div class="each_comment">
+            <% p.comments.each do |c| %>
+                
+                <p><%= current_user.name %> : <%= c.content %></p>
+            <% end %>
+        </div>
+        
+        <form action = "/create_comment/<%=p.id%>", method = "get" class = "row">
+            <input type="text" class="form-control-file" cols = "30" name = "content" placeholder = "댓글을 입력하세요">
+            <button type="submit" class="btn btn-primary">댓글달기</button>
+        </form>
+        
+
+    <% end %>
+        
+</div>
