@@ -91,7 +91,7 @@
                         <% end %>
                     </button>
                 </form>
-                <% if current_user.name == p.writer %>
+                <% if current_user.email == p.writer %>
                     <form action="/edit/<%= p.id %>" method="get">
                         <button type="submit" class="btn btn-secondary">Edit</button> 
                     </form>
@@ -125,7 +125,7 @@
 </div>
 
 
-<footer class="footer fixed-bottom">
+<footer class="footer mt-5">
   <ul class="footer_content">
     <li>&copy;희재, 지연, 규란, 건회 - Likelion at UOS</li>
   </ul>

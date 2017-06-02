@@ -17,7 +17,7 @@ class MainController < ApplicationController
     
     def create_comment
         comment = Comment.new
-        comment.writer = current_user.name
+        comment.writer = current_user.email
         comment.content = params[:content]
         comment.post_id = params[:post_id]
         comment.save
