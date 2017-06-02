@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170602130623) do
 >>>>>>> 550725052011f54bbc3ca4629b87f368d51af74b
 
   create_table "users", force: :cascade do |t|
+    t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
 <<<<<<< HEAD

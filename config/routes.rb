@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   devise_for :users
+  
   root 'main#index'
+  
   get  'main/login'
   get '/create_post' => 'main#create_post'
   get '/create_comment/:post_id' => 'main#create_comment'

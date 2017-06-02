@@ -23,5 +23,4 @@ class MainController < ApplicationController
         
         redirect_to '/'
     end
-    
 end

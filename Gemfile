@@ -1,13 +1,9 @@
 source 'https://rubygems.org'
 
 
-<<<<<<< HEAD
 gem 'devise'
 gem "paperclip", "~> 5.0.0"
-=======
-gem'devise'
 
->>>>>>> 550725052011f54bbc3ca4629b87f368d51af74b
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
