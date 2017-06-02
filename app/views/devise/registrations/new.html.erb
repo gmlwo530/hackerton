@@ -1,5 +1,10 @@
-<h2>Sign up</h2>
+<div class="container">
+        <div class="card card-container">
 
+<h2>Sign up</h2>
+<p id="profile-name" class="profile-name-card"></p>
+            <div class="form-signin" >
+                <span id="reauth-email" class="reauth-email"></span>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -27,9 +32,13 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+
+    
+    <%= f.submit "Sign up" ,:class => "btn btn-lg btn-primary btn-block btn-signin" %>
+ 
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "devise/shared/links"  %>
+</div>
+ </div>
+  </div>
