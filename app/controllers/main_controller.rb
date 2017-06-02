@@ -8,6 +8,7 @@ class MainController < ApplicationController
        post = Post.new
        #post.writer = current_user.name
        post.content = params[:content]
+       post.option = params[:option]
        post.image = params[:image]
        post.save
        
@@ -24,6 +25,10 @@ class MainController < ApplicationController
         redirect_to '/'
     end
     
+    def ruby
+        @post= post.find_by(value= "ruby")
+    end
+
     def like
         like = Like.find_by(user_id: current_user.id,
                             post_id: params[:post_id])
@@ -44,6 +49,9 @@ class MainController < ApplicationController
         
         redirect_to '/'
     end
+
+
+
     
     def delete
         delete_post = Post.find(params[:post_id])
@@ -63,4 +71,5 @@ class MainController < ApplicationController
         redirect_to '/'
     end
     
+
 end

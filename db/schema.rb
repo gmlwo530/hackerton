@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170602165936) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "content"
+    t.string   "option"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
