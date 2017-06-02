@@ -1,7 +1,7 @@
 <div class="container">
 <nav class="nav-header">
     <div class="logo">
-    <img src="/assets/logo.jpg">
+    <a href = "/"><img src="/assets/logo.jpg"></a>
     </div>
     
     <div class="name">
@@ -9,7 +9,7 @@
     </div>
     
     <div class="sign_out">
-    <%= current_user.email %>
+    <%= current_user.name %>
     <%= link_to 'sign out',  destroy_user_session_path, method: :delete %>
     </div>
 </nav>
@@ -38,7 +38,7 @@
         </div>
         
    
-    <div class="form-check">
+    <div class="form-check list">
       <label class="form-check-label">
         <input type="radio" class="form-check-input" name="option" value="ruby" checked>
         ruby
@@ -70,10 +70,6 @@
             <p>질문 : <%= p.content %></p>
             <p>주제 : <%= p.option %></p>
  
-        
-  
-            
-
 
             <% if p.image_file_name.nil? %>
             <% else %>
@@ -83,12 +79,28 @@
 
         </div>
         
-        <form action="/edit/<%= p.id %>" method="get">
-            <button type="submit" class="btn btn-secondary">Edit</button> 
-        </form>
-        <form action="/delete/<%= p.id %>" method="get">
-            <button type="submit" class="btn btn-danger">Delete</button> 
-        </form>
+        <label class= "col-3">
+            <div class="row mx-auto" style="text-align:center;">
+             
+                <form action = "/like/<%=p.id%>" method = "get">
+                    <button type="submit" class="btn btn-primary">
+                        <% if current_user.is_like?(p) %>
+                            Unlike <%= p.likes.size %>    
+                        <% else %>
+                            Like <%= p.likes.size %>
+                        <% end %>
+                    </button>
+                </form>
+        
+                <form action="/edit/<%= p.id %>" method="get">
+                    <button type="submit" class="btn btn-secondary">Edit</button> 
+                </form>
+                <form action="/delete/<%= p.id %>" method="get">
+                    <button type="submit" class="btn btn-danger">Delete</button> 
+                </form>
+       
+            </div>
+        </label>
         
         <div class="each_comment">
             <% p.comments.each do |c| %>
@@ -104,17 +116,6 @@
             <% end %>
         </div>
         
-        <form action = "/like/<%=p.id%>" method = "get">
-                
-            <button type="submit" class="btn btn-primary">
-                <% if current_user.is_like?(p) %>
-                    Unlike <%= p.likes.size %>    
-                <% else %>
-                    Like <%= p.likes.size %>
-                <% end %>
-            </button>
-                
-        </form>
         
         <form action = "/create_comment/<%=p.id%>", method = "get" class = "row">
             <input type="text" class="form-control-file" cols = "30" name = "content" placeholder = "댓글을 입력하세요">
@@ -125,3 +126,10 @@
     <% end %>
         
 </div>
+
+
+<footer class="footer fixed-bottom">
+  <ul class="footer_content">
+    <li>&copy;희재, 지연, 규란, 건회 - Likelion at UOS</li>
+  </ul>
+</footer>
