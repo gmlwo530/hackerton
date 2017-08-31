@@ -2,7 +2,21 @@
     align-items: right;
     
 }
+.footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #181818;
+}
 
-.sub{
-    list-style: none;
+.footer_content{
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: #FFF;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

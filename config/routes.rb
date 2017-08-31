@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
 
+  get 'home/create'
+
   devise_for :users
   
   root 'main#index'
